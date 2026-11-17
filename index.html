@@ -317,29 +317,17 @@
             transition: transform 0.3s;
         }
         .location-image img:hover { transform: scale(1.02); }
-        .btn-map {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: transparent;
-            color: #111111;
-            border: 1px solid #111111;
-            padding: 0.7rem 2rem;
-            font-size: 0.9rem;
-            text-decoration: none;
-            transition: all 0.2s;
-            font-family: inherit;
-            margin-top: 0.5rem;
-        }
-        .btn-map:hover {
-            background: #111111;
-            color: #ffffff;
-            transform: translateY(-2px);
-        }
+
         .map-container {
             margin-top: 1.5rem;
             border-radius: 20px;
             overflow: hidden;
+        }
+
+        .map-container img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         /* Тайминг без иконок */
@@ -460,6 +448,11 @@
             margin-bottom: 1rem;
         }
         .presence-sub {
+            margin-bottom: 1rem;
+        }
+        .presence-deadline {
+            font-size: 1.1rem;
+            font-weight: 600;
             margin-bottom: 2rem;
         }
         .form-group {
@@ -657,6 +650,7 @@
                 <div class="countdown-item"><span id="days">0</span><span>дней</span></div>
                 <div class="countdown-item"><span id="hours">0</span><span>часов</span></div>
                 <div class="countdown-item"><span id="minutes">0</span><span>минут</span></div>
+                <div class="countdown-item"><span id="seconds">0</span><span>секунд</span></div>
             </div>
         </div>
     </div>
@@ -677,13 +671,15 @@
                 <a href="IMG_1751.PNG" target="_blank" style="color: #111; text-decoration: underline;">Схема заезда</a>
             </p>
             <div class="location-image">
-                <img src="локация.jpg" alt="Усадьба Gold Kolco">
+                <img src="Изображение 39.jpeg" alt="Усадьба Gold Kolco">
             </div>
-            <a href="https://yandex.by/maps/?text=Усадьба%20Gold%20Kolco%2C%20Волковичи%2C%20переулок%20Поселковый%2015б%2C%20Минск%2C%20Беларусь" target="_blank" rel="noopener" class="btn-map">
-                ПОСТРОИТЬ МАРШРУТ
-            </a>
+
+            <!-- Карта без поиска: фрагмент места с точкой -->
             <div class="map-container">
-                <iframe src="https://yandex.ru/map-widget/v1/?text=Усадьба%20Gold%20Kolco%2C%20Волковичи%2C%20переулок%20Поселковый%2015б%2C%20Минск%2C%20Беларусь" width="100%" height="250" frameborder="0" allowfullscreen></iframe>
+                <img
+                    src="https://static-maps.yandex.ru/1.x/?ll=27.394592%2C53.818105&z=16&l=map&pt=27.394592,53.818105,pm2rdm&size=650,300"
+                    alt="Усадьба Gold Kolco на карте"
+                >
             </div>
         </div>
     </div>
@@ -737,9 +733,6 @@
         <p class="wishes-text">
             Наш свадебный вечер мы хотим провести в атмосфере взрослого праздника. Будем рады, если вы поддержите наше пожелание и придёте без детей. А если такой возможности нет, пожалуйста, дайте нам знать. Мы обязательно постараемся найти решение!
         </p>
-        <p class="wishes-text" style="font-weight: 600; margin-top: 1.2rem;">
-            Дедлайн: до 1-го мая 2027 г.
-        </p>
         <p class="wishes-text" style="margin-top: 1.5rem;">
             Мы будем рады, если вместо традиционного букета вы подарите нам бутылочку хорошего алкогольного напитка. А дальше у каждой бутылочки появится своя маленькая история… Но об этом мы расскажем уже на празднике!
         </p>
@@ -752,13 +745,14 @@
         <h2 class="presence-title">ПРИСУТСТВИЕ</h2>
         <div class="small-divider"></div>
         <p class="presence-sub">Пожалуйста, ответьте на несколько вопросов, это поможет нам в организации торжества.</p>
-        
+        <p class="presence-deadline">Дедлайн: до 1-го мая 2027 г.</p>
+
         <form id="presenceForm" action="https://formspree.io/f/mnpdpwqn" method="POST">
             <div class="form-group">
                 <label for="fullname">Фамилия и имя *</label>
                 <input type="text" id="fullname" name="fullname" required placeholder="Петрова Анна">
             </div>
-            
+
             <div class="form-group">
                 <label>Сможете ли вы присутствовать? *</label>
                 <div class="radio-group">
@@ -767,12 +761,12 @@
                     <label><input type="radio" name="attendance" value="Возможно, сообщу позже"> Возможно, сообщу позже</label>
                 </div>
             </div>
-            
+
             <div class="form-group">
                 <label for="companions">Будет ли с вами кто-то еще? (если да, укажите имена)</label>
                 <input type="text" id="companions" name="companions" placeholder="Например: Сергей, Ольга">
             </div>
-            
+
             <div class="form-group">
                 <label>Предпочтения по напиткам (можно выбрать несколько)</label>
                 <div class="checkbox-group">
@@ -788,7 +782,7 @@
                 <label for="allergies">Аллергии и особенности</label>
                 <textarea id="allergies" name="allergies" rows="2" placeholder="Напишите, если есть аллергии или особенности"></textarea>
             </div>
-            
+
             <button type="submit" class="submit-btn">Отправить</button>
         </form>
         <div class="soon-message" id="soonMessage">Спасибо! Мы получили ваши ответы. До скорой встречи!</div>
@@ -870,26 +864,33 @@
             });
         }
 
-        // Счётчик
+        // Счётчик с секундами
         function updateCountdown() {
             const target = new Date(2027, 4, 29, 15, 0, 0);
             const now = new Date();
             const diff = target - now;
+
             if (diff <= 0) {
                 document.getElementById('days').textContent = '0';
                 document.getElementById('hours').textContent = '0';
                 document.getElementById('minutes').textContent = '0';
+                document.getElementById('seconds').textContent = '0';
                 return;
             }
+
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
             const hours = Math.floor((diff % 86400000) / 3600000);
             const minutes = Math.floor((diff % 3600000) / 60000);
+            const seconds = Math.floor((diff % 60000) / 1000);
+
             document.getElementById('days').textContent = days;
             document.getElementById('hours').textContent = hours;
             document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
         }
+
         updateCountdown();
-        setInterval(updateCountdown, 60000);
+        setInterval(updateCountdown, 1000);
 
         // Скролл
         const scrollArrow = document.getElementById('scrollArrow');
