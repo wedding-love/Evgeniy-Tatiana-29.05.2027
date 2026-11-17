@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -390,87 +389,6 @@
             .timeline-event { text-align: left; }
         }
 
-        /* Фотогалерея-слайдер */
-        .gallery-block {
-            background: #ffffff;
-            padding: 4rem 1.5rem;
-            border-bottom: 1px solid #eeeeee;
-        }
-        .gallery-container {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        .gallery-title {
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
-        .slider-container {
-            position: relative;
-            max-width: 700px;
-            margin: 2rem auto 0;
-            overflow: hidden;
-            border-radius: 28px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-        }
-        .slider-track {
-            display: flex;
-            transition: transform 0.4s ease;
-        }
-        .slide {
-            flex: 0 0 100%;
-            text-align: center;
-        }
-        .slide img {
-            width: 100%;
-            max-height: 500px;
-            object-fit: cover;
-            border-radius: 24px;
-            display: block;
-        }
-        .slider-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0,0,0,0.5);
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.2s;
-            z-index: 10;
-        }
-        .slider-btn:hover {
-            background: #000000;
-        }
-        .btn-left { left: 10px; }
-        .btn-right { right: 10px; }
-        .slider-dots {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 1rem;
-        }
-        .dot {
-            width: 8px;
-            height: 8px;
-            background: #cccccc;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        .dot.active {
-            background: #111111;
-            transform: scale(1.2);
-        }
-
         /* Дресс-код */
         .dresscode-block {
             background: #ffffff;
@@ -529,27 +447,6 @@
             margin-top: 1.5rem;
         }
 
-        /* Как добраться */
-        .transport-block {
-            background: #ffffff;
-            padding: 4rem 1.5rem;
-            border-bottom: 1px solid #eeeeee;
-        }
-        .transport-container { max-width: 800px; margin: 0 auto; text-align: center; }
-        .transport-title {
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
-        .transport-text {
-            font-size: 1rem;
-            line-height: 1.7;
-            text-align: left;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .transport-text p { margin-bottom: 0.8rem; }
-
         /* Форма */
         .presence-block {
             background: #ffffff;
@@ -604,6 +501,10 @@
             gap: 0.5rem;
             font-weight: normal;
             margin-bottom: 0;
+        }
+        input[type="checkbox"],
+        input[type="radio"] {
+            accent-color: #111;
         }
         .submit-btn {
             background: #111;
@@ -771,6 +672,10 @@
                 Волковичи, переулок Поселковый 15б<br>
                 Минск, Беларусь
             </div>
+            <p style="margin-top: 1rem; font-size: 1rem;">
+                <strong>Особенности заезда:</strong> под знак «Тупик».
+                <a href="IMG_1751.PNG" target="_blank" style="color: #111; text-decoration: underline;">Схема заезда</a>
+            </p>
             <div class="location-image">
                 <img src="локация.jpg" alt="Усадьба Gold Kolco">
             </div>
@@ -807,28 +712,6 @@
     </div>
 </section>
 
-<!-- Фотогалерея-слайдер -->
-<section class="gallery-block fade-up">
-    <div class="gallery-container">
-        <h2 class="gallery-title">ФОТОГАЛЕРЕЯ</h2>
-        <div class="small-divider"></div>
-        <div class="slider-container">
-            <button class="slider-btn btn-left" id="prevSlide">‹</button>
-            <div class="slider-track" id="sliderTrack">
-                <div class="slide"><img src="фото1.jpg" alt="Свадебное фото 1"></div>
-                <div class="slide"><img src="фото2.jpg" alt="Свадебное фото 2"></div>
-                <div class="slide"><img src="фото3.jpg" alt="Свадебное фото 3"></div>
-                <div class="slide"><img src="фото4.jpg" alt="Свадебное фото 4"></div>
-                <div class="slide"><img src="фото5.jpg" alt="Свадебное фото 5"></div>
-                <div class="slide"><img src="фото6.jpg" alt="Свадебное фото 6"></div>
-            </div>
-            <button class="slider-btn btn-right" id="nextSlide">›</button>
-        </div>
-        <div class="slider-dots" id="sliderDots"></div>
-        <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #777;">Ещё больше фотографий будет доступно после праздника</p>
-    </div>
-</section>
-
 <!-- Дресс-код -->
 <section class="dresscode-block fade-up">
     <div class="dresscode-container">
@@ -846,7 +729,7 @@
     </div>
 </section>
 
-<!-- Пожелания (взрослый праздник) -->
+<!-- Пожелания -->
 <section class="wishes-block fade-up">
     <div class="wishes-content">
         <h2 class="wishes-title">ПОЖЕЛАНИЯ</h2>
@@ -857,31 +740,9 @@
         <p class="wishes-text" style="font-weight: 600; margin-top: 1.2rem;">
             Дедлайн: до 1-го мая 2027 г.
         </p>
-    </div>
-</section>
-
-<!-- Вместо цветов -->
-<section class="wishes-block fade-up">
-    <div class="wishes-content">
-        <h2 class="wishes-title">ВМЕСТО ЦВЕТОВ</h2>
-        <div class="small-divider"></div>
-        <p class="wishes-text">
+        <p class="wishes-text" style="margin-top: 1.5rem;">
             Мы будем рады, если вместо традиционного букета вы подарите нам бутылочку хорошего алкогольного напитка. А дальше у каждой бутылочки появится своя маленькая история… Но об этом мы расскажем уже на празднике!
         </p>
-    </div>
-</section>
-
-<!-- Как добраться -->
-<section class="transport-block fade-up">
-    <div class="transport-container">
-        <h2 class="transport-title">КАК ДОБРАТЬСЯ</h2>
-        <div class="small-divider"></div>
-        <div class="transport-text">
-            <p><strong>Особенности заезда:</strong> под знак «Тупик».</p>
-            <div style="text-align: center; margin-top: 1rem;">
-                <img src="IMG_1751.PNG" alt="Схема заезда" style="max-width: 100%; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-            </div>
-        </div>
     </div>
 </section>
 
@@ -1021,7 +882,7 @@
                 return;
             }
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (86400000)) / (3600000));
+            const hours = Math.floor((diff % 86400000) / 3600000);
             const minutes = Math.floor((diff % 3600000) / 60000);
             document.getElementById('days').textContent = days;
             document.getElementById('hours').textContent = hours;
@@ -1048,48 +909,6 @@
             });
         }, { threshold: 0.15 });
         animated.forEach(el => observer.observe(el));
-
-        // Слайдер для фотогалереи
-        const track = document.getElementById('sliderTrack');
-        const slides = document.querySelectorAll('.slide');
-        const prevBtn = document.getElementById('prevSlide');
-        const nextBtn = document.getElementById('nextSlide');
-        const dotsContainer = document.getElementById('sliderDots');
-        if (slides.length && track && prevBtn && nextBtn) {
-            let currentIndex = 0;
-            const slideCount = slides.length;
-
-            function updateSlider() {
-                track.style.transform = `translateX(-${currentIndex * 100}%)`;
-                document.querySelectorAll('.dot').forEach((dot, i) => {
-                    dot.classList.toggle('active', i === currentIndex);
-                });
-            }
-
-            function createDots() {
-                dotsContainer.innerHTML = '';
-                for (let i = 0; i < slideCount; i++) {
-                    const dot = document.createElement('div');
-                    dot.classList.add('dot');
-                    if (i === currentIndex) dot.classList.add('active');
-                    dot.addEventListener('click', () => {
-                        currentIndex = i;
-                        updateSlider();
-                    });
-                    dotsContainer.appendChild(dot);
-                }
-            }
-
-            createDots();
-            prevBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex - 1 + slideCount) % slideCount;
-                updateSlider();
-            });
-            nextBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex + 1) % slideCount;
-                updateSlider();
-            });
-        }
 
         // Форма
         const form = document.getElementById('presenceForm');
