@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -37,7 +38,7 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-            background-image: url('молодые.jpg');
+            background-image: url('IMG_1746 - Евгений Мойса.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -470,7 +471,7 @@
             transform: scale(1.2);
         }
 
-        /* Дресс-код — пастельные тона */
+        /* Дресс-код */
         .dresscode-block {
             background: #ffffff;
             padding: 4rem 1.5rem;
@@ -509,9 +510,6 @@
             margin-top: 0.6rem;
             font-size: 0.9rem;
         }
-        .mint { background: #c7e9d0; }
-        .peach { background: #ffdab9; }
-        .lavender-light { background: #e0d0ff; }
 
         /* Пожелания */
         .wishes-block {
@@ -531,7 +529,7 @@
             margin-top: 1.5rem;
         }
 
-        /* Как добраться — без иконок */
+        /* Как добраться */
         .transport-block {
             background: #ffffff;
             padding: 4rem 1.5rem;
@@ -563,6 +561,9 @@
             font-size: clamp(1.8rem, 5vw, 2.5rem);
             font-weight: 500;
             margin-bottom: 1rem;
+        }
+        .presence-sub {
+            margin-bottom: 2rem;
         }
         .form-group {
             text-align: left;
@@ -876,9 +877,10 @@
         <h2 class="transport-title">КАК ДОБРАТЬСЯ</h2>
         <div class="small-divider"></div>
         <div class="transport-text">
-            <p><strong>На автомобиле:</strong> Бесплатная парковка на территории усадьбы. Въезд с переулка Поселкового, ориентир — вывеска «Gold Kolco».</p>
-            <p><strong>Общественным транспортом:</strong> Рекомендуем воспользоваться такси или каршерингом, так как усадьба находится за городом. Адрес: Волковичи, переулок Поселковый 15б.</p>
-            <p><strong>Такси:</strong> Удобно вызвать через Яндекс Go или Uber — адрес определится по названию «Усадьба Gold Kolco».</p>
+            <p><strong>Особенности заезда:</strong> под знак «Тупик».</p>
+            <div style="text-align: center; margin-top: 1rem;">
+                <img src="IMG_1751.PNG" alt="Схема заезда" style="max-width: 100%; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            </div>
         </div>
     </div>
 </section>
@@ -922,8 +924,8 @@
             </div>
 
             <div class="form-group">
-                <label for="message">Аллергии и особенности</label>
-                <textarea id="message" name="message" rows="2" placeholder="Напишите, если есть аллергии или особенности"></textarea>
+                <label for="allergies">Аллергии и особенности</label>
+                <textarea id="allergies" name="allergies" rows="2" placeholder="Напишите, если есть аллергии или особенности"></textarea>
             </div>
             
             <button type="submit" class="submit-btn">Отправить</button>
@@ -1128,3 +1130,4 @@
 </script>
 </body>
 </html>
+```
